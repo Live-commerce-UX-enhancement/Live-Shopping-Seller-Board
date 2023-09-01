@@ -18,6 +18,7 @@ app.use(cors());
 app.use(router);
 
 app.get("/ping", (req, res) => {
+  console.log("ping test pong");
   res.send({ response: "pong" }).status(200);
 } )
 
