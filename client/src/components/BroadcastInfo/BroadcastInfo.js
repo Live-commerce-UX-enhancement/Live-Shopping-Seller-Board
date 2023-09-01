@@ -10,7 +10,7 @@ import Loading from '../Loading/Loading';
 
 import './BroadcastInfo.css';
 
-const ENDPOINT = 'http://localhost:5000/';
+const ENDPOINT = 'http://ec2-52-55-180-73.compute-1.amazonaws.com:5000/';
 const QASERVER = 'http://15.164.68.124:8000/'
 
 let socket;

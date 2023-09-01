@@ -12,7 +12,7 @@ import Input from '../Input/Input';
 
 import './Chat.css';
 
-const ENDPOINT = 'http://localhost:5000/';
+const ENDPOINT = 'http://ec2-52-55-180-73.compute-1.amazonaws.com:5000/';
 
 let socket;
 
