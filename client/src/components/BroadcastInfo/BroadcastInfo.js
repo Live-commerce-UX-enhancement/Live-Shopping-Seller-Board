@@ -10,14 +10,15 @@ import Loading from '../Loading/Loading';
 
 import './BroadcastInfo.css';
 
-// const ENDPOINT = 'http://ec2-52-55-180-73.compute-1.amazonaws.com:5000/';
-const ENDPOINT = 'http://localhost:5000/';
+const ENDPOINT = 'http://ec2-52-55-180-73.compute-1.amazonaws.com:5000/';
+// const ENDPOINT = 'http://localhost:5000/';
 const QASERVER = 'http://15.164.68.124:8000/'
 
 let socket;
 
 const BroadcastInfo = ({ location }) => {
   const [loading, setLoading] = useState(true);
+  const [loadingInfo, setLoadingInfo] = useState('');
   const [detail, setDetail] = useState(false);
 
   const [broadcastId, setBroadcastId] = useState('');
@@ -56,13 +57,14 @@ const BroadcastInfo = ({ location }) => {
   }, []);
 
   const getProducts = () => {
+    setLoadingInfo('제품 정보를 불러오는 중 입니다.');
     socket.emit('products');
     setLoading(true);
   }
 
   const sendBroadcastInfo = (event) => {
+    setLoadingInfo('정보를 등록하는 중 입니다.');
     event.preventDefault();
-
     setLoading(true);
 
     var detail = {};
@@ -104,7 +106,7 @@ const BroadcastInfo = ({ location }) => {
 
   return (
     <div>
-      {loading ? <Loading target={'상품 정보'}/> : 
+      {loading ? <Loading info={loadingInfo}/> : 
         <div className="outerContainer">
         <div className="container">
   
