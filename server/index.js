@@ -17,6 +17,10 @@ const classifierUrl = "https://03u09n51hb.execute-api.ap-northeast-2.amazonaws.c
 app.use(cors());
 app.use(router);
 
+app.get("/ping", (req, res) => {
+  res.send({ response: "pong" }).status(200);
+} )
+
 io.on('connect', (socket) => {
 
   socket.on('join', ({ broadcastId }, callback) => {
@@ -177,7 +181,7 @@ io.on('connect', (socket) => {
             if (data_list[0] == 'broadcast') {
               // Loading 시, 이전 채팅 불러오기
               const chat_url = `https://apis.naver.com/live_commerce_web/live_commerce_web/v1/broadcast/${broadcastId}/recent-comments?next=${last_comment_no}&size=20`
-
+              
               fetch(chat_url)
               .then((response) => response.json())
               .then((data) => {
