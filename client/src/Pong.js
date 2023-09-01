@@ -5,7 +5,8 @@ function Pong({  }){
 
     const [message, setMessage] = useState('');
 
-    const ENDPOINT = 'http://ec2-52-55-180-73.compute-1.amazonaws.com:5000/ping';
+    // const ENDPOINT = 'http://ec2-52-55-180-73.compute-1.amazonaws.com:5000/ping';
+    const ENDPOINT = 'http://localhost:5000/ping';
 
     fetch(ENDPOINT)
     .then(response => {

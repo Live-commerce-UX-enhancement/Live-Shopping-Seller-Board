@@ -12,7 +12,8 @@ import Input from '../Input/Input';
 
 import './Chat.css';
 
-const ENDPOINT = 'http://ec2-52-55-180-73.compute-1.amazonaws.com:5000/';
+// const ENDPOINT = 'http://ec2-52-55-180-73.compute-1.amazonaws.com:5000/';
+const ENDPOINT = 'http://localhost:5000/';
 
 let socket;
 
@@ -53,15 +54,10 @@ function Chat({ location }) {
     event.preventDefault();
 
     var answerContainer = document.getElementById(messageNo);
-    console.log(answerContainer);
     var answerMessage = answerContainer.getElementsByClassName("messageText")[0];
 
-    console.log(answerMessage);
-    console.log('a', answerMessage.value);
-
-    //전송 버튼 눌렀을 때 답변 보이게 하는거, 답변이 '답변 예정'에서 진짜 답변으로 바뀌는거 아직..
-    answerMessage.innerText = message; // 여기 안됌
-    answerMessage.style.display = 'flex';// 여기 안됌
+    answerMessage.innerText = message;
+    answerContainer.style.display = 'flex';
 
   }
 
