@@ -62,7 +62,7 @@ function Chat({ location }) {
   }
 
   return (
-    <div className="outerContainer">
+    <div className="ChatouterContainer">
       <div className="container">
           <InfoBar intend = "일반" />
           <AllMessages messages={messages}  />
