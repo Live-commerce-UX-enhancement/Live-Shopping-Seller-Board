@@ -15,7 +15,7 @@ export default function SignIn() {
           <input placeholder="BroadcastUrl" className="joinInput" type="text" onChange={(event) => setBroadcastUrl(event.target.value)} />
         </div>
         <Link onClick={e => (!broadcastUrl) ? e.preventDefault() : null} to={`/broadcast-info?broadcastId=${broadcastUrl.replace(regex, '')}`}>
-          <button className={'button mt-20'} type="submit">Sign In</button>
+          <button className={'button mt-20'} type="submit">Admin Program Start</button>
         </Link>
       </div>
     </div>

@@ -1,13 +1,12 @@
-.messageBox {
+.productBox {
   background: #F3F3F3;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 5px 20px;
   color: white;
-  display: inline-block;
-  max-width: 80%;
+  width: 100%;
 }
 
-.messageText {
+.productName {
   width: 100%;
   letter-spacing: 0;
   float: left;
@@ -15,15 +14,10 @@
   word-wrap: break-word;
 }
 
-.messageText img {
-  vertical-align: middle;
-}
-
-.messageContainer {
+.productContainer {
   display: flex;
-  justify-content: flex-end;
   padding: 0 5%;
-  margin-top: 3px;
+  margin-bottom: 10px;
 }
 
 .sentText {

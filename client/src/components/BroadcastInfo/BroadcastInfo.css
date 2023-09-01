@@ -11,9 +11,27 @@
   flex-direction: column;
   justify-content: space-between;
   background: #FFFFFF;
-  border-radius: 8px;
-  height: 60%;
-  width: 35%;
+  border-radius: 0px;
+  height: 100%;
+  width: 100%;
+}
+
+.containerBottom {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5%;
+  width: 100%;
+}
+
+.broadcastInfoButton {
+  color: #fff !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #2979FF;
+  padding: 20px;
+  display: inline-block;
+  border: none;
+  border-radius: 5%;
 }
 
 @media (min-width: 320px) and (max-width: 480px) {

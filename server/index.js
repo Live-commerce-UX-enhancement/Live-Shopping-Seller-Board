@@ -32,14 +32,9 @@ io.on('connect', (socket) => {
     callback();
   });
 
-  // socket.on('disconnect', () => {
-  //   const user = removeUser(socket.id);
-
-  //   if(user) {
-  //     io.to(user.room).emit('message', { user: 'Admin', text: `${user.name} has left.` });
-  //     io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room)});
-  //   }
-  // })
+  socket.on('disconnect', () => {
+    removeRoom(socket.id);
+  })
 
   socket.on('products', () => {
 
@@ -100,12 +95,11 @@ io.on('connect', (socket) => {
 
                 if (data_list[0] == 'broadcast_shopping_product') {
                     var product_list = JSON.parse(data_list[1]);
-                    var product_name_list = [];
                     
                     product_list.forEach(product => {
-                      var product_item = JSON.stringify({'id' : product["key"],'name' : product["name"]});
-                      socket.emit('product', { product: `${product_item}`});
+                      socket.emit('product', { id: product["key"], 'name' : product["name"]});
                     })
+                    socket.emit('product-end');
 
                     session_for_products.detach();
                     page.close();
