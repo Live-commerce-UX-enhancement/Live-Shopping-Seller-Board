@@ -10,7 +10,7 @@ export default function SignIn() {
   return (
     <div className="joinOuterContainer">
       <div className="joinInnerContainer">
-        <h1 className="heading">Join</h1>
+        <h1 className="heading">Auto-Chat-Classification-and-Answers-for-Live-Commerce</h1>
         <div>
           <input placeholder="BroadcastUrl" className="joinInput" type="text" onChange={(event) => setBroadcastUrl(event.target.value)} />
         </div>

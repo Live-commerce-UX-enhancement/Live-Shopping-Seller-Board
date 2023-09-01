@@ -4,7 +4,9 @@ import queryString from 'query-string';
 import io from "socket.io-client";
 
 import Products from '../Products/Products';
-import InfoInput from './InfoInput/InfoInput'
+import InfoInput from './InfoInput/InfoInput';
+
+import Loading from '../Loading/Loading';
 
 import './BroadcastInfo.css';
 
@@ -14,12 +16,14 @@ const QASERVER = 'http://15.164.68.124:8000/'
 let socket;
 
 const BroadcastInfo = ({ location }) => {
+  const [loading, setLoading] = useState(true);
+  const [detail, setDetail] = useState(false);
+
   const [broadcastId, setBroadcastId] = useState('');
   const [products, setProducts] = useState([]);
 
   const [broadcastInfo, setBroadcastInfo] = useState('');
   const [eventInfo, setEventInfo] = useState('');
-  
 
   useEffect(() => {
     const { broadcastId } = queryString.parse(location.search);
@@ -45,16 +49,20 @@ const BroadcastInfo = ({ location }) => {
 
     socket.on('product-end', () => {
       socket.emit('disconnect');
+      setLoading(false);
     })
 
   }, []);
 
   const getProducts = () => {
     socket.emit('products');
+    setLoading(true);
   }
 
   const sendBroadcastInfo = (event) => {
     event.preventDefault();
+
+    setLoading(true);
 
     var detail = {};
     
@@ -86,36 +94,54 @@ const BroadcastInfo = ({ location }) => {
     fetch(QASERVER + broadcastId + "/detail", othePram)
       .then((data) => {return data.json()})
       .then((res) => {
-        console.log("response");
-        console.log(res);
+        setLoading(false);
+        setDetail(true);
       })
       .catch((error) => console.log(error));
 
   }
 
   return (
-    <div className="outerContainer">
-      <div className="container">
+    <div>
+      {loading ? <Loading target={'상품 정보'}/> : 
+        <div className="outerContainer">
+        <div className="container">
+  
+            <form>
+  
+              <div className="infoContainer justifyStart">
+                <div className="infoBox backgroundLight">
+                  <p className="infoName colorDark">방송 정보</p>
+                  <InfoInput type={"방송"} setInfo={setBroadcastInfo} info={broadcastInfo} />
+                </div>
+              </div>
 
-          <form>
-
-            <InfoInput type={"방송"} setInfo={setBroadcastInfo} info={broadcastInfo} />
-
-            <InfoInput type={"이벤트"} setInfo={setEventInfo} info={eventInfo} />
-
-            <Products products={products}/>
-
-            <div className="containerBottom">
-              <button className={'broadcastInfoButton'} type="submit" onClick={e => sendBroadcastInfo(e)}>상품 정보 저장</button>
-
-              <Link onClick={e => null} to={`/chat?broadcastId=${broadcastId}`}>
-                <button className={'broadcastInfoButton'} type="submit">Next Page</button>
-              </Link>
-            </div>
-          </form>
-
-      </div>
+              <div className="infoContainer justifyStart">
+                <div className="infoBox backgroundLight">
+                  <p className="infoName colorDark">이벤트 정보</p>
+                  <InfoInput type={"이벤트"} setInfo={setEventInfo} info={eventInfo} />
+                </div>
+              </div>
+  
+              <Products products={products}/>
+  
+              <div className="containerBottom">
+                <button className={'broadcastInfoButton'} type="submit" onClick={e => sendBroadcastInfo(e)}>상품 정보 저장</button>
+  
+                <Link onClick={e => {if (!detail) {
+                  e.preventDefault();
+                  alert("상품 정보를 입력해주세요.");
+                }}} to={detail ? `/chat?broadcastId=${broadcastId}` : '#'}>
+                  <button className={'broadcastInfoButton'} type="submit" >Next Page</button>
+                </Link>
+              </div>
+            </form>
+  
+          </div>
+        </div> 
+      }
     </div>
+    
   );
 }
 
