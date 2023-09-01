@@ -34,6 +34,14 @@
   letter-spacing: 0.3px;
 }
 
+.answerContainer {
+  display: none;
+  justify-content: flex-end;
+  padding: 0 5%;
+  margin-top: 3px;
+  
+}
+
 .pl-10 {
   padding-left: 10px;
 }

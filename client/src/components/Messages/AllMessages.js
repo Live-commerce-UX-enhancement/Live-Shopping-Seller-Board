@@ -6,10 +6,10 @@ import AllMessage from './Message/AllMessage';
 
 import './Messages.css';
 
-function AllMessages({ messages, intend }){
+function AllMessages({ messages }){
   return(
     <ScrollToBottom className="messages">
-    {messages.map((message, i) => <div key={i}><AllMessage message={message} intend = {intend}/></div>)}
+    {messages.map((message, i) => <div key={i}><AllMessage message={message} /></div>)}
     </ScrollToBottom>
   );
 }

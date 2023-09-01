@@ -110,7 +110,7 @@ io.on('connect', (socket) => {
         });
     })();
   })
-
+  
   socket.on('getChats', () => {
     const room = getRoom(socket.id);
 

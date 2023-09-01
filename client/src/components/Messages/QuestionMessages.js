@@ -6,10 +6,10 @@ import QuestionMessage from './Message/QuestionMessage';
 
 import './Messages.css';
 
-function QuestionMessages({ messages, intend, broadcastId }){
+function QuestionMessages({ messages, broadcastId, setMessage, setMessageNo }){
   return(
     <ScrollToBottom className="messages">
-    {messages.map((message, i) => <div key={i}><QuestionMessage message={message} intend = {intend} broadcastId={broadcastId}/></div>)}
+    {messages.map((message, i) => <div key={i}><QuestionMessage message={message} broadcastId={broadcastId} setMessage={setMessage} setMessageNo={setMessageNo} /></div>)}
     </ScrollToBottom>
   );
 }
