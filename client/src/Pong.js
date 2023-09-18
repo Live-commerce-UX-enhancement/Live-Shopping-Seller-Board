@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import {API} from '../../config';
+import {API} from './config';
 
 function Pong({  }){
 
