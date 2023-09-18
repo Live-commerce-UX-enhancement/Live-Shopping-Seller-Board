@@ -12,7 +12,8 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 const puppeteer = require('puppeteer');
-const classifierUrl = "https://03u09n51hb.execute-api.ap-northeast-2.amazonaws.com/classifier_api/classify";
+// const classifierUrl = "https://03u09n51hb.execute-api.ap-northeast-2.amazonaws.com/classifier_api/classify";
+const classifierUrl = 'http://18.141.54.174:8000/classifier_api/classify';
 
 app.use(cors());
 app.use(router);
@@ -189,7 +190,7 @@ io.on('connect', (socket) => {
                 // python 의도 분류 모델 서버에 전송
                 // ws.send(JSON.stringify(request_data));
                 // 파라미터
-                const othePram = {
+                const otheParam = {
                   headers: {
                     'content-type': 'application/json',
                   },
@@ -197,10 +198,9 @@ io.on('connect', (socket) => {
                   method: 'POST',
                 };
 
-                fetch(classifierUrl, othePram)
+                fetch(classifierUrl, otheParam)
                   .then((data) => {return data.json()})
                   .then((res) => {
-                    console.log("response");
 
                     res = JSON.stringify(res);
 
@@ -214,11 +214,9 @@ io.on('connect', (socket) => {
             if (data_list[0] == 'broadcast_chat') {
               var request_data = JSON.parse(data_list[1]);
               // python 의도 분류 모델 서버에 전송
-              console.log("request");
-              console.log(request_data);
 
               // 파라미터
-              const othePram = {
+              const otheParam = {
                 headers: {
                   'content-type': 'application/json',
                 },
@@ -226,11 +224,9 @@ io.on('connect', (socket) => {
                 method: 'POST',
               };
 
-                fetch(classifierUrl, othePram)
+                fetch(classifierUrl, otheParam)
                   .then((data) => {return data.json()})
                   .then((res) => {
-                    console.log("response");
-
                     res = JSON.stringify(res);
 
                     socket.emit('message', { user: 'admin', text: `${res}`});
