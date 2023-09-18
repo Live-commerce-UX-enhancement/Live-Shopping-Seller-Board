@@ -12,8 +12,8 @@ import Input from '../Input/Input';
 
 import './Chat.css';
 
-// const ENDPOINT = 'http://ec2-13-251-142-57.ap-southeast-1.compute.amazonaws.com:5000/';
-const ENDPOINT = 'http://localhost:5000/';
+const ENDPOINT = 'http://ec2-13-251-142-57.ap-southeast-1.compute.amazonaws.com:5000/';
+// const ENDPOINT = 'http://localhost:5000/';
 
 let socket;
 
