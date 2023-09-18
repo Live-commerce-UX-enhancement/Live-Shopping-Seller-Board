@@ -20,7 +20,6 @@ let socket;
 const BroadcastInfo = ({ location }) => {
   const [loading, setLoading] = useState(true);
   const [loadingInfo, setLoadingInfo] = useState('');
-  const [detail, setDetail] = useState(false);
 
   const [broadcastId, setBroadcastId] = useState('');
   const [products, setProducts] = useState([]);
@@ -99,7 +98,7 @@ const BroadcastInfo = ({ location }) => {
       .then((data) => {return data.json()})
       .then((res) => {
         setLoading(false);
-        setDetail(true);
+        window.location.href = `/chat?broadcastId=${broadcastId}`
       })
       .catch((error) => console.log(error));
 
@@ -131,13 +130,6 @@ const BroadcastInfo = ({ location }) => {
   
               <div className="containerBottom">
                 <button className={'broadcastInfoButton'} type="submit" onClick={e => sendBroadcastInfo(e)}>상품 정보 저장</button>
-  
-                <Link onClick={e => {if (!detail) {
-                  e.preventDefault();
-                  alert("상품 정보를 입력해주세요.");
-                }}} to={detail ? `/chat?broadcastId=${broadcastId}` : '#'}>
-                  <button className={'broadcastInfoButton'} type="submit" >Next Page</button>
-                </Link>
               </div>
             </form>
   
