@@ -10,10 +10,9 @@ import Loading from '../Loading/Loading';
 
 import './BroadcastInfo.css';
 
-const ENDPOINT = 'http://ec2-13-251-142-57.ap-southeast-1.compute.amazonaws.com:5000/';
-// const ENDPOINT = 'http://localhost:5000/';
-const QASERVER = 'http://18.141.54.174:8000/'
-// const QASERVER = 'http://localhost:8000/';
+const NodeJS_URL = `${config.NodeJS_URL}/`
+
+const QA_URL = `${config.PythonQA_URL}/`
 
 let socket;
 
@@ -31,7 +30,7 @@ const BroadcastInfo = ({ location }) => {
     const { broadcastId } = queryString.parse(location.search);
     setBroadcastId(broadcastId)
 
-    socket = io(ENDPOINT);
+    socket = io(NodeJS_URL);
 
     socket.emit('join', { broadcastId }, (error) => {
       if(error) {
@@ -41,7 +40,7 @@ const BroadcastInfo = ({ location }) => {
 
     getProducts();
 
-  }, [ENDPOINT, location.search]);
+  }, [NodeJS_URL, location.search]);
 
   useEffect(() => {
     socket.on('product', product => {
@@ -94,7 +93,7 @@ const BroadcastInfo = ({ location }) => {
       method: 'POST',
     };
 
-    fetch(QASERVER + broadcastId + "/detail", othePram)
+    fetch(QA_URL + broadcastId + "/detail", othePram)
       .then(() => {
         window.location.href = `/chat?broadcastId=${broadcastId}`
         setLoading(false);

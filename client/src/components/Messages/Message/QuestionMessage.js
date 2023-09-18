@@ -12,9 +12,10 @@ function QuestionMessage ({ message,  broadcastId, setMessage, setMessageNo }) {
     console.log('clinked message: ', data.message);
 
     const question = data.message;
-    const apiUrl = `http://18.141.54.174:8000/${broadcastId}/query?q=${question}`;
+
+    const QA_URL = `${config.PythonQA_URL}/${broadcastId}/query?q=${question}`
     
-    fetch(apiUrl)
+    fetch(QA_URL)
     .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
