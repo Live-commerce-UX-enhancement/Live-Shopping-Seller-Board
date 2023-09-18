@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
+import config from '../../config';
 import './Message.css';
 let socket;
 

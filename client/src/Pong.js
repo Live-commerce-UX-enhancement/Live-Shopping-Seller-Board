@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 
+import config from '../../config';
 
 function Pong({  }){
 
     const [message, setMessage] = useState('');
 
-    const ENDPOINT = 'http://ec2-13-251-142-57.ap-southeast-1.compute.amazonaws.com:5000/ping';
-    // const ENDPOINT = 'http://localhost:5000/ping';
+    const ENDPOINT = `${config.NodeJS_URL}/ping`
 
     fetch(ENDPOINT)
     .then(response => {

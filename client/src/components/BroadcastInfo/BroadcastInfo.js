@@ -7,6 +7,7 @@ import Products from '../Products/Products';
 import InfoInput from './InfoInput/InfoInput';
 
 import Loading from '../Loading/Loading';
+import config from '../../config';
 
 import './BroadcastInfo.css';
 
