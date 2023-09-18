@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import config from '../../config';
+import {API} from '../../config';
 import './Message.css';
 let socket;
 
@@ -14,7 +14,7 @@ function QuestionMessage ({ message,  broadcastId, setMessage, setMessageNo }) {
 
     const question = data.message;
 
-    const QA_URL = `${config.PythonQA_URL}/${broadcastId}/query?q=${question}`
+    const QA_URL = `${API.PythonQA_URL}/${broadcastId}/query?q=${question}`
     
     fetch(QA_URL)
     .then(response => {

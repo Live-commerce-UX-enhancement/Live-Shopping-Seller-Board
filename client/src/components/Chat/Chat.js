@@ -9,12 +9,12 @@ import QuestionMessages from '../Messages/QuestionMessages'
 import InfoBar from '../InfoBar/InfoBar';
 import Input from '../Input/Input';
 
-import config from '../../config';
+import {API} from '../../config';
 
 
 import './Chat.css';
 
-const NodeJS_URL = `${config.NodeJS_URL}/`
+const NodeJS_URL = `${API.NodeJS_URL}/`
 
 let socket;
 

@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 
-import config from '../../config';
+import {API} from '../../config';
 
 function Pong({  }){
 
     const [message, setMessage] = useState('');
 
-    const ENDPOINT = `${config.NodeJS_URL}/ping`
+    const ENDPOINT = `${API.NodeJS_URL}/ping`
 
     fetch(ENDPOINT)
     .then(response => {

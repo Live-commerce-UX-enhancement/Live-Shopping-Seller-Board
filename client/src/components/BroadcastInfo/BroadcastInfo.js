@@ -7,13 +7,13 @@ import Products from '../Products/Products';
 import InfoInput from './InfoInput/InfoInput';
 
 import Loading from '../Loading/Loading';
-import config from '../../config';
+import {API} from '../../config';
 
 import './BroadcastInfo.css';
 
-const NodeJS_URL = `${config.NodeJS_URL}/`
+const NodeJS_URL = `${API.NodeJS_URL}/`
 
-const QA_URL = `${config.PythonQA_URL}/`
+const QA_URL = `${API.PythonQA_URL}/`
 
 let socket;
 
