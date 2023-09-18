@@ -12,7 +12,7 @@ function QuestionMessage ({ message,  broadcastId, setMessage, setMessageNo }) {
     console.log('clinked message: ', data.message);
 
     const question = data.message;
-    const apiUrl = `http://15.164.68.124:8000/${broadcastId}/query?q=${question}`;
+    const apiUrl = `http://18.141.54.174:8000/${broadcastId}/query?q=${question}`;
     
     fetch(apiUrl)
     .then(response => {
