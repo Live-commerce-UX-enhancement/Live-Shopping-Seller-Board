@@ -95,10 +95,9 @@ const BroadcastInfo = ({ location }) => {
     };
 
     fetch(QASERVER + broadcastId + "/detail", othePram)
-      .then((data) => {return data.json()})
-      .then((res) => {
-        setLoading(false);
+      .then(() => {
         window.location.href = `/chat?broadcastId=${broadcastId}`
+        setLoading(false);
       })
       .catch((error) => console.log(error));
 
