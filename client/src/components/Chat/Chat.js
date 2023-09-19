@@ -60,6 +60,8 @@ function Chat({ location }) {
     answerMessage.innerText = message;
     answerContainer.style.display = 'flex';
 
+    socket.emit('answer', {message : `${message}`});
+
   }
 
   return (

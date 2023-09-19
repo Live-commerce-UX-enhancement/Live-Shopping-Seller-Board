@@ -13,8 +13,8 @@ const io = socketio(server);
 
 const puppeteer = require('puppeteer');
 // const classifierUrl = "https://03u09n51hb.execute-api.ap-northeast-2.amazonaws.com/classifier_api/classify";
-// const classifierUrl = 'http://18.141.54.174:8000/classifier_api/classify';
-const classifierUrl = "http://127.0.0.1:8000/classifier_api/classify";
+const classifierUrl = 'http://18.141.54.174:8000/classifier_api/classify';
+// const classifierUrl = "http://127.0.0.1:8000/classifier_api/classify";
 
 app.use(cors());
 app.use(router);
