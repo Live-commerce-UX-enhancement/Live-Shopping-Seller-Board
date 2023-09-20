@@ -22,4 +22,12 @@ const removeRoom = (id) => {
 
 const getRoom = (id) => rooms.find((room) => room.id === id);
 
-module.exports = { addRoom, removeRoom, getRoom};
+const getRoomByBroadcastId = (broadcastId) => {
+  const room = rooms.find((room) => room.broadcastId === broadcastId);
+
+  if (!room) return {error: 'there is no room'};
+  
+  return {room};
+};
+
+module.exports = { addRoom, removeRoom, getRoom, getRoomByBroadcastId};

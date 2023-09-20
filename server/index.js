@@ -3,7 +3,7 @@ const express = require('express');
 const socketio = require('socket.io');
 const cors = require('cors');
 
-const { addRoom, removeRoom, getRoom } = require('./rooms');
+const { addRoom, removeRoom, getRoom, getRoomByBroadcastId } = require('./rooms');
 
 const router = require('./router');
 
@@ -26,11 +26,22 @@ app.get("/ping", (req, res) => {
 
 io.on('connect', (socket) => {
 
-  socket.on('join', ({ broadcastId }, callback) => {
+  socket.on('makeBroadcast', ({ broadcastId }, callback) => {
 
     const broadcastUrl = `https://view.shoppinglive.naver.com/lives/${broadcastId}?tr=lim&fm=shoppinglive&sn=home`
 
     const { error, room } = addRoom({ id: socket.id, broadcastUrl: broadcastUrl, broadcastId: broadcastId });
+
+    if(error) return callback(error);
+
+    socket.join(room);
+
+    callback();
+  });
+
+  socket.on('join', ({ broadcastId }, callback) => {
+
+    const { error, room } = getRoomByBroadcastId(broadcastId);
 
     if(error) return callback(error);
 
