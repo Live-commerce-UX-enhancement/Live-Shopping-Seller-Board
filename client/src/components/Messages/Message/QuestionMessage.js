@@ -1,12 +1,8 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
 import {API} from '../../../config';
 import './Message.css';
-let socket;
 
 function QuestionMessage ({ message,  broadcastId, setMessage, setMessageNo }) {
-
-  const [answer, setAnswer] = useState([]);
 
   function getAnswer(data){
     console.log('broadcast id : ', broadcastId);
@@ -25,7 +21,6 @@ function QuestionMessage ({ message,  broadcastId, setMessage, setMessageNo }) {
     })
     .then(data => {
       console.log("API 응답 데이터:", data);
-      setAnswer(data.answer);
       setMessage(data.answer);
       setMessageNo(message.commentNo);
     })

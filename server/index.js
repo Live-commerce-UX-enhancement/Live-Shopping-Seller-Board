@@ -25,7 +25,6 @@ app.get("/ping", (req, res) => {
 } )
 
 io.on('connect', (socket) => {
-
   socket.on('join', ({ broadcastId }, callback) => {
 
     const broadcastUrl = `https://view.shoppinglive.naver.com/lives/${broadcastId}?tr=lim&fm=shoppinglive&sn=home`
