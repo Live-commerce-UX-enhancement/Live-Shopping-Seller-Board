@@ -21,7 +21,10 @@ const removeRoom = (id) => {
 }
 
 const getRoomByBroadcastId = ({broadcastId}) => {
+  console.log("getRoomByBroadcastId");
   const room = rooms.find((room) => room.broadcastId === broadcastId);
+
+  console.log(broadcastId);
 
   if (!room) return {error: 'there is no room'};
 
