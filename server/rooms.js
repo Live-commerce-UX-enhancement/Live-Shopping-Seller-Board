@@ -20,14 +20,15 @@ const removeRoom = (id) => {
   if(index !== -1) return rooms.splice(index, 1)[0];
 }
 
-const getRoom = (id) => rooms.find((room) => room.id === id);
-
-const getRoomByBroadcastId = (broadcastId) => {
+const getRoomByBroadcastId = ({broadcastId}) => {
   const room = rooms.find((room) => room.broadcastId === broadcastId);
 
   if (!room) return {error: 'there is no room'};
-  
+
   return {room};
 };
+
+const getRoom = (id) => rooms.find((room) => room.id === id);
+
 
 module.exports = { addRoom, removeRoom, getRoom, getRoomByBroadcastId};
