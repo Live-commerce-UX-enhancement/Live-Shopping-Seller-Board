@@ -30,7 +30,7 @@ function Chat({ location }) {
     
     socket = io(NodeJS_URL);
 
-    socket.emit('makeBroadcast', { broadcastId }, (error) => {
+    socket.emit('join', { broadcastId }, (error) => {
       if(error) {
         alert(error);
       }

@@ -26,7 +26,7 @@ app.get("/ping", (req, res) => {
 
 io.on('connect', (socket) => {
 
-  socket.on('makeBroadcast', ({ broadcastId }, callback) => {
+  socket.on('join', ({ broadcastId }, callback) => {
 
     const broadcastUrl = `https://view.shoppinglive.naver.com/lives/${broadcastId}?tr=lim&fm=shoppinglive&sn=home`
 
@@ -39,7 +39,7 @@ io.on('connect', (socket) => {
     callback();
   });
 
-  socket.on('join', ({ broadcastId }, callback) => {
+  socket.on('joinRoom', ({ broadcastId }, callback) => {
 
     const { error, room } = getRoomByBroadcastId(broadcastId);
 
