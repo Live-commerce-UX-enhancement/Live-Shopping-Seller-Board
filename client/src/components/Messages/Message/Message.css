@@ -13,6 +13,7 @@
   float: left;
   font-size: 1.1em;
   word-wrap: break-word;
+  touch-action: none;
 }
 
 .messageText img {
@@ -30,7 +31,7 @@
   display: flex;
   align-items: center;
   font-family: Helvetica;
-  color: #828282;
+  color: #ced4da;
   letter-spacing: 0.3px;
 }
 
@@ -67,9 +68,17 @@
 }
 
 .backgroundBlue {
-  background: #2979FF;
+  background: #ced4da;
 }
 
 .backgroundLight {
   background: #F3F3F3;
+}
+
+.non-click {
+  background-color: #ced4da;
+}
+
+.click {
+  background-color: #828282;
 }

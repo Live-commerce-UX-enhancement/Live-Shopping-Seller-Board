@@ -12,8 +12,8 @@ const RequestMessage = ({ message }) => {
           <div className="messageContainer justifyEnd" key={message.commentNo} >
             <div className="messageBox backgroundBlue">
               <p className="messageText colorWhite">
+                id : {message.nickname}<br/>
                 message: {message.message}<br />
-                result: {message.result}
               </p>
               </div>
           </div>
