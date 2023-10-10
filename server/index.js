@@ -3,7 +3,7 @@ const express = require('express');
 const socketio = require('socket.io');
 const cors = require('cors');
 
-const { addRoom, removeRoom, getRoom, getRoomByBroadcastId } = require('./rooms');
+const { addRoom, removeRoom, getRoomByBroadcastId } = require('./rooms');
 
 const router = require('./router');
 
@@ -13,8 +13,8 @@ const io = socketio(server);
 
 const puppeteer = require('puppeteer');
 // const classifierUrl = "https://03u09n51hb.execute-api.ap-northeast-2.amazonaws.com/classifier_api/classify";
-const classifierUrl = 'http://18.141.54.174:8000/classifier_api/classify';
-// const classifierUrl = "http://127.0.0.1:8000/classifier_api/classify";
+// const classifierUrl = 'http://18.141.54.174:8000/classifier_api/classify';
+const classifierUrl = "http://127.0.0.1:8000/classifier_api/classify";
 
 app.use(cors());
 app.use(router);
@@ -25,15 +25,16 @@ app.get("/ping", (req, res) => {
 } )
 
 io.on('connect', (socket) => {
+
   socket.on('join', ({ broadcastId }, callback) => {
 
     const broadcastUrl = `https://view.shoppinglive.naver.com/lives/${broadcastId}?tr=lim&fm=shoppinglive&sn=home`
 
-    const { error, room } = addRoom({ id: socket.id, broadcastUrl: broadcastUrl, broadcastId: broadcastId });
+    const { error, room } = addRoom({ broadcastId: broadcastId, broadcastUrl: broadcastUrl});
 
     if(error) return callback(error);
 
-    socket.join(room);
+    socket.join(room.broadcastId);
 
     callback();
   });
@@ -44,18 +45,26 @@ io.on('connect', (socket) => {
 
     if(error) return callback(error);
 
-    socket.join(room);
+    socket.join(room.broadcastId);
 
     callback();
   });
 
-  socket.on('disconnect', () => {
-    removeRoom(socket.id);
+  socket.on('answer', ({broadcastId, message}, callback) => {
+    io.sockets.in(broadcastId).emit("answer", {message : message});
   })
 
-  socket.on('products', () => {
+  socket.on('removeRoom', (broadcastId) => {
+    removeRoom(broadcastId);
+  })
 
-    const room = getRoom(socket.id);
+  socket.on('disconnect', () => {
+    removeRoom(broadcastId);
+  })
+
+  socket.on('products', (broadcastId) => {
+
+    const {room} = getRoomByBroadcastId(broadcastId); 
 
     (async() => {
       const browser = await puppeteer.launch({args : [
@@ -128,8 +137,8 @@ io.on('connect', (socket) => {
     })();
   })
   
-  socket.on('getChats', () => {
-    const room = getRoom(socket.id);
+  socket.on('getChats', (broadcastId) => {
+    const {room} = getRoomByBroadcastId(broadcastId);
 
     (async() => {
       const browser = await puppeteer.launch({args : [

@@ -28,7 +28,7 @@ const BroadcastInfo = ({ location }) => {
 
   useEffect(() => {
     const { broadcastId } = queryString.parse(location.search);
-    setBroadcastId(broadcastId)
+    setBroadcastId(broadcastId);
 
     socket = io(NodeJS_URL);
 
@@ -38,28 +38,22 @@ const BroadcastInfo = ({ location }) => {
       }
     });
 
-    getProducts();
+    setLoadingInfo('제품 정보를 불러오는 중 입니다.');
+    socket.emit('products', broadcastId);
+    setLoading(true);
 
-  }, [NodeJS_URL, location.search]);
-
-  useEffect(() => {
     socket.on('product', product => {
       product.info = "";
       setProducts(products => [ ...products, product ]);
     });
 
     socket.on('product-end', () => {
+      socket.emit('removeRoom', broadcastId);
       socket.emit('disconnect');
       setLoading(false);
     })
 
-  }, []);
-
-  const getProducts = () => {
-    setLoadingInfo('제품 정보를 불러오는 중 입니다.');
-    socket.emit('products');
-    setLoading(true);
-  }
+  }, [NodeJS_URL, location.search]);
 
   const sendBroadcastInfo = (event) => {
     setLoadingInfo('정보를 등록하는 중 입니다.');

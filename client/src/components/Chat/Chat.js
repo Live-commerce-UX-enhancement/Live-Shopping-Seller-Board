@@ -30,16 +30,18 @@ function Chat({ location }) {
     
     socket = io(NodeJS_URL);
 
-    socket.emit('join', { broadcastId }, (error) => {
+    socket.emit('join', { broadcastId } , (error) => {
       if(error) {
         alert(error);
       }
     });
+
   }, [NodeJS_URL, location.search]);
+
+  
   
   useEffect(() => {
-    // event.preventDefault();
-    socket.emit('getChats');
+    socket.emit('getChats', broadcastId);
 
     socket.on('message', message => {
 
@@ -60,7 +62,7 @@ function Chat({ location }) {
     answerMessage.innerText = message;
     answerContainer.style.display = 'flex';
 
-    socket.emit('answer', {message : `${message}`});
+    socket.emit('answer', {broadcastId : broadcastId, message : `${message}`});
 
   }
 
