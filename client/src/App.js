@@ -4,7 +4,6 @@ import Chat from './components/Chat/Chat';
 import BroadcastInfo from './components/BroadcastInfo/BroadcastInfo'
 import Join from './components/Join/Join';
 import Pong from './Pong';
-import Client from './Client';
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 

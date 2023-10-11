@@ -33,7 +33,7 @@ function Pong({  }){
     })
 
     useEffect(() => {
-      const broadcastId  = '1126776';
+      const broadcastId  = '1125403';
       
       socket = io(API.NodeJS_URL);
   
