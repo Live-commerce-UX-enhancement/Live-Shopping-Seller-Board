@@ -22,6 +22,7 @@ let socket;
 function Chat({ location }) {
 
   const { broadcastId } = queryString.parse(location.search);
+  const [question, setQuestion] = useState('');
   const [message, setMessage] = useState('');
   const [messageNo, setMessageNo] = useState('');
   const [messages, setMessages] = useState([]);
@@ -68,11 +69,9 @@ function Chat({ location }) {
     answerMessage.innerText = message;
     answerContainer.style.display = 'flex';
 
-    // socket.emit('answer', {broadcastId : broadcastId, message : `${message}`});
-
     // Python Socket 에 answer 전송
     if (pythonWebSocket) {
-      pythonWebSocket.send(message);
+      pythonWebSocket.send(JSON.stringify({"message" : message, "question" : question}));
     }
     
   }
@@ -85,7 +84,7 @@ function Chat({ location }) {
       </div>
       <div className="container">
           <InfoBar intend = "질문" />
-          <QuestionMessages messages={messages} broadcastId={broadcastId} setMessage={setMessage} setMessageNo={setMessageNo}/>
+          <QuestionMessages messages={messages} broadcastId={broadcastId} setMessage={setMessage} setMessageNo={setMessageNo} setQuestion={setQuestion}/>
           <Input message={message} setMessage={setMessage} sendMessage={sendMessage}/>
       </div>
       <div className="container">

@@ -2,9 +2,13 @@ import React,{useState, useEffect} from 'react';
 import {API} from '../../../config';
 import './Message.css';
 
+<<<<<<< Updated upstream
 let clickedDiv = '';
 
 function QuestionMessage ({ message,  broadcastId, setMessage, setMessageNo }) {
+=======
+function QuestionMessage ({ message,  broadcastId, setMessage, setMessageNo, setQuestion }) {
+>>>>>>> Stashed changes
 
   //const [clickedDiv, setClickedDiv] = useState(''); // State to keep track of the clicked div
   
@@ -59,6 +63,7 @@ function QuestionMessage ({ message,  broadcastId, setMessage, setMessageNo }) {
       <div>
         <div className="messageContainer justifyEnd" 
         onClick={(event) => {
+        setQuestion(message.message);
         getAnswer(message);
         handleDivClick(event, message);
       }}>
