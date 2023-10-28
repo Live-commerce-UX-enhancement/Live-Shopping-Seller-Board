@@ -99,8 +99,8 @@ const BroadcastInfo = ({ location }) => {
   return (
     <div>
       {loading ? <Loading info={loadingInfo}/> : 
-        <div className="outerContainer">
-        <div className="container">
+        <div className="info-outerContainer">
+        <div className="info-container">
   
             <form>
   
