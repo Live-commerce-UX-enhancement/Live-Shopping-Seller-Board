@@ -18,12 +18,14 @@ const NodeJS_URL = `${API.NodeJS_URL}/`
 
 let socket;
 
+
 function Chat({ location }) {
 
   const { broadcastId } = queryString.parse(location.search);
   const [message, setMessage] = useState('');
   const [messageNo, setMessageNo] = useState('');
   const [messages, setMessages] = useState([]);
+  const [pythonWebSocket, setPythonWebSocket] = useState(null);
 
   useEffect(() => {
     const { broadcastId } = queryString.parse(location.search);
@@ -35,6 +37,10 @@ function Chat({ location }) {
         alert(error);
       }
     });
+
+    // Python socket 에 연결
+    const pythonWs = new WebSocket('ws://18.141.54.174:8000/ws/' + broadcastId); 
+    setPythonWebSocket(pythonWs);
 
   }, [NodeJS_URL, location.search]);
 
@@ -62,8 +68,13 @@ function Chat({ location }) {
     answerMessage.innerText = message;
     answerContainer.style.display = 'flex';
 
-    socket.emit('answer', {broadcastId : broadcastId, message : `${message}`});
+    // socket.emit('answer', {broadcastId : broadcastId, message : `${message}`});
 
+    // Python Socket 에 answer 전송
+    if (pythonWebSocket) {
+      pythonWebSocket.send(message);
+    }
+    
   }
 
   return (
