@@ -8,7 +8,7 @@ const AllMessage = ({ message }) => {
     return (
       <div>
         <div className="messageContainer justifyEnd" key={message.commentNo}>
-          <div  className="messageBox backgroundBlue">
+          <div  className="messageBox backgroundGray">
             <p className="messageText colorWhite">
               id : {message.nickname}<br/>
               message: {message.message}<br />
