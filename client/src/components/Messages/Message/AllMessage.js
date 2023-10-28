@@ -7,11 +7,13 @@ const AllMessage = ({ message }) => {
   if (message.result === "일반"){
     return (
       <div>
-        <div className="messageContainer justifyEnd" key={message.commentNo}>
+        <div className="idContainer">
+            {message.nickname}
+          </div>
+        <div className="messageContainer justifyStart" key={message.commentNo}>
           <div  className="messageBox backgroundGray">
-            <p className="messageText colorWhite">
-              id : {message.nickname}<br/>
-              message: {message.message}<br />
+            <p className="messageText colorDark">
+              {message.message}<br />
             </p>
           </div>
         </div>

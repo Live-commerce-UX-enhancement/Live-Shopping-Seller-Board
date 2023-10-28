@@ -2,33 +2,22 @@ import React,{useState, useEffect} from 'react';
 import {API} from '../../../config';
 import './Message.css';
 
-<<<<<<< Updated upstream
 let clickedDiv = '';
 
-function QuestionMessage ({ message,  broadcastId, setMessage, setMessageNo }) {
-=======
 function QuestionMessage ({ message,  broadcastId, setMessage, setMessageNo, setQuestion }) {
->>>>>>> Stashed changes
 
-  //const [clickedDiv, setClickedDiv] = useState(''); // State to keep track of the clicked div
-  
   const handleDivClick = (event, message) => {
-    // const id = message.commentNo;
-    // console.log('classList: ',document.getElementById(id).classList);
+
     console.log('clickedDiv: ',clickedDiv);
     if (clickedDiv!='') {
-      console.log('클릭한거 있음');
       const prevDiv = document.getElementById(clickedDiv);
-      console.log('prevDiv: ', prevDiv);
       prevDiv.classList.remove("click");
       prevDiv.classList.add("backgroundGray");
     }
     // Add the "click" class to the clicked div and update the state
     event.target.classList.remove("backgroundGray");
     event.target.classList.add("click");
-    console.log('event.target.id: ',event.target.id);
     clickedDiv = event.target.id;
-    console.log('clickedDiv: ',clickedDiv);   
 
   };
 
@@ -61,22 +50,24 @@ function QuestionMessage ({ message,  broadcastId, setMessage, setMessageNo, set
     message.answer = "답변 예정";
     return (
       <div>
-        <div className="messageContainer justifyEnd" 
+        <div className="idContainer">
+          {message.nickname}
+        </div>
+        <div className="messageContainer justifyStart" 
         onClick={(event) => {
         setQuestion(message.message);
         getAnswer(message);
         handleDivClick(event, message);
-      }}>
-            <div className="messageBox backgroundGray" id={'q-' + message.commentNo} >
-              <p className="messageText colorWhite" onClick={(event) => {event.stopPropagation();}}>
-                id: {message.nickname}<br />
-                message: {message.message}<br />
-              </p>
-            </div>
+        }}>
+          <div className="messageBox backgroundGray" id={'q-' + message.commentNo} >
+            <p className="messageText colorDark" onClick={(event) => {event.stopPropagation();}}>
+              {message.message}<br />
+            </p>
+          </div>
         </div>
         <div id={message.commentNo} className="answerContainer justifyEnd">
-          <div className="messageBox backgroundLight">
-          <p className="messageText colorDark">
+          <div className="messageBox backgroundBlue">
+          <p className="messageText colorWhite">
             답변 예정
           </p>
           </div>

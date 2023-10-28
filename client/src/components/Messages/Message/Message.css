@@ -1,17 +1,18 @@
 .messageBox {
   background: #F3F3F3;
-  border-radius: 20px;
-  padding: 5px 20px;
+  border-radius: 10px;
+  padding: 0px 10px;
   color: white;
   display: inline-block;
   max-width: 80%;
+  position: relative;
 }
 
 .messageText {
   width: 100%;
   letter-spacing: 0;
   float: left;
-  font-size: 1.1em;
+  font-size: 1em;
   word-wrap: break-word;
   touch-action: none;
 }
@@ -25,6 +26,16 @@
   justify-content: flex-end;
   padding: 0 5%;
   margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.idContainer {
+  justify-content: flex-end;
+  padding: 8px 5% 0 5%;
+  margin-left: 8px;
+  font-weight: bold;
+  color :Gray;
+  font-size: 0.9em;
 }
 
 .sentText {
@@ -68,17 +79,17 @@
 }
 
 .backgroundGray {
-  background: #ced4da;
+  background: #f3f3f3;
 }
 
 .backgroundLight {
   background: #F3F3F3;
 }
 
-.non-click {
-  background-color: #ced4da;
+.backgroundBlue {
+  background: #2979FF;
 }
 
 .click {
-  background-color: #828282;
+  background-color: #d1d0d0;
 }
