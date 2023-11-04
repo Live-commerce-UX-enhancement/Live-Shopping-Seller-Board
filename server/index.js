@@ -12,7 +12,7 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 const puppeteer = require('puppeteer');
-const classifierUrl = "https://3fymgi1t6g.execute-api.ap-northeast-2.amazonaws.com/stage";
+const classifierUrl = "https://a8tvk327r4.execute-api.ap-northeast-2.amazonaws.com/chat-classify/classify";
 
 app.use(cors());
 app.use(router);
