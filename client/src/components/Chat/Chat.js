@@ -52,6 +52,8 @@ function Chat({ location }) {
 
     socket.on('message', message => {
 
+      console.log(message);
+
       const messageList = JSON.parse(message.text).chat_data; 
 
       messageList.map((message, idx) => {

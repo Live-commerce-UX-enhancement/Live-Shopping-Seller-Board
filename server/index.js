@@ -12,7 +12,7 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 const puppeteer = require('puppeteer');
-const classifierUrl = "https://3fymgi1t6g.execute-api.ap-northeast-2.amazonaws.com/stage/";
+const classifierUrl = "https://3fymgi1t6g.execute-api.ap-northeast-2.amazonaws.com/stage";
 
 app.use(cors());
 app.use(router);
@@ -206,7 +206,6 @@ io.on('connect', (socket) => {
               .then((data) => {
                 // python 의도 분류 모델 서버에 전송
                 // 파라미터
-                console.log(JSON.stringify(data));
                 const otheParam = {
                   headers: {
                     'content-type': 'application/json',
