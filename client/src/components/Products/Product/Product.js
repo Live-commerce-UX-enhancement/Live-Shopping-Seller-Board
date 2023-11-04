@@ -24,7 +24,7 @@ const Product = ({ product }) => {
     (
       <div className="productContainer justifyStart">
         <div className="productBox backgroundLight">
-          <p className="productName colorDark">상품 이름 : {product.name}</p>
+          <p className="productName colorWhite">상품 이름 : {product.name}</p>
 
           <InfoInput type={product.name} setInfo={setProductInfo} info={productInfo} />
         </div>

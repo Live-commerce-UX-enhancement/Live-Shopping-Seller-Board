@@ -106,14 +106,14 @@ const BroadcastInfo = ({ location }) => {
   
               <div className="infoContainer justifyStart">
                 <div className="infoBox backgroundLight">
-                  <p className="infoName colorDark">방송 정보</p>
+                  <p className="infoName colorWhite">방송 정보</p>
                   <InfoInput type={"방송"} setInfo={setBroadcastInfo} info={broadcastInfo} />
                 </div>
               </div>
 
               <div className="infoContainer justifyStart">
                 <div className="infoBox backgroundLight">
-                  <p className="infoName colorDark">이벤트 정보</p>
+                  <p className="infoName colorWhite">이벤트 정보</p>
                   <InfoInput type={"이벤트"} setInfo={setEventInfo} info={eventInfo} />
                 </div>
               </div>
