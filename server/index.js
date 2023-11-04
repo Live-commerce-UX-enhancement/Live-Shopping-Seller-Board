@@ -12,9 +12,7 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 const puppeteer = require('puppeteer');
-// const classifierUrl = "https://03u09n51hb.execute-api.ap-northeast-2.amazonaws.com/classifier_api/classify";
-const classifierUrl = 'http://18.141.54.174:8000/classifier_api/classify';
-// const classifierUrl = "http://127.0.0.1:8000/classifier_api/classify";
+const classifierUrl = "https://3fymgi1t6g.execute-api.ap-northeast-2.amazonaws.com/stage/";
 
 app.use(cors());
 app.use(router);
@@ -207,8 +205,8 @@ io.on('connect', (socket) => {
               .then((response) => response.json())
               .then((data) => {
                 // python 의도 분류 모델 서버에 전송
-                // ws.send(JSON.stringify(request_data));
                 // 파라미터
+                console.log(JSON.stringify(data));
                 const otheParam = {
                   headers: {
                     'content-type': 'application/json',
