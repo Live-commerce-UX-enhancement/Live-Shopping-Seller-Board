@@ -38,7 +38,7 @@ const BroadcastInfo = ({ location }) => {
       }
     });
 
-    setLoadingInfo('제품 정보를 불러오는 중 입니다.');
+    setLoadingInfo('Loading product information');
     socket.emit('products', broadcastId);
     setLoading(true);
 
@@ -56,7 +56,7 @@ const BroadcastInfo = ({ location }) => {
   }, [NodeJS_URL, location.search]);
 
   const sendBroadcastInfo = (event) => {
-    setLoadingInfo('정보를 등록하는 중 입니다.');
+    setLoadingInfo('Registering information.');
     event.preventDefault();
     setLoading(true);
 
@@ -106,15 +106,15 @@ const BroadcastInfo = ({ location }) => {
   
               <div className="infoContainer justifyStart">
                 <div className="infoBox backgroundLight">
-                  <p className="infoName colorWhite">방송 정보</p>
-                  <InfoInput type={"방송"} setInfo={setBroadcastInfo} info={broadcastInfo} />
+                  <p className="infoName colorWhite">Broadcast Information</p>
+                  <InfoInput type={"Broadcast"} setInfo={setBroadcastInfo} info={broadcastInfo} />
                 </div>
               </div>
 
               <div className="infoContainer justifyStart">
                 <div className="infoBox backgroundLight">
-                  <p className="infoName colorWhite">이벤트 정보</p>
-                  <InfoInput type={"이벤트"} setInfo={setEventInfo} info={eventInfo} />
+                  <p className="infoName colorWhite">Event Information</p>
+                  <InfoInput type={"Event"} setInfo={setEventInfo} info={eventInfo} />
                 </div>
               </div>
   

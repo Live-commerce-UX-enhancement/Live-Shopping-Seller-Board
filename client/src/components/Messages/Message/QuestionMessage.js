@@ -8,7 +8,6 @@ function QuestionMessage ({ message,  broadcastId, setMessage, setMessageNo, set
 
   const handleDivClick = (event, message) => {
 
-    console.log('clickedDiv: ',clickedDiv);
     if (clickedDiv!='') {
       const prevDiv = document.getElementById(clickedDiv);
       prevDiv.classList.remove("click");

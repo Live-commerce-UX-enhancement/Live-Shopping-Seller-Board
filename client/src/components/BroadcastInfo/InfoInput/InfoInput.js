@@ -4,7 +4,7 @@ import './InfoInput.css';
 
 const InfoInput = ({ type, setInfo, info }) => {
 
-    const placeholder = `${type}의 정보를 입력해주세요.`
+    const placeholder = `Please enter the information of ${type}`
     
     return (
     <textarea

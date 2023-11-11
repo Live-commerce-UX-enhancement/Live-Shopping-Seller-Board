@@ -81,16 +81,16 @@ function Chat({ location }) {
   return (
     <div className="ChatouterContainer">
       <div className="container">
-          <InfoBar intend = "일반" />
+          <InfoBar intend = "General" />
           <AllMessages messages={messages}  />
       </div>
       <div className="container">
-          <InfoBar intend = "질문" />
+          <InfoBar intend = "Question" />
           <QuestionMessages messages={messages} broadcastId={broadcastId} setMessage={setMessage} setMessageNo={setMessageNo} setQuestion={setQuestion}/>
           <Input message={message} setMessage={setMessage} sendMessage={sendMessage}/>
       </div>
       <div className="container">
-          <InfoBar intend = "요청" />
+          <InfoBar intend = "Request" />
           <RequestMessages messages={messages} />
       </div>
     </div>
