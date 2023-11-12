@@ -40,7 +40,7 @@ function Chat({ location }) {
     });
 
     // Python socket 에 연결
-    const pythonWs = new WebSocket('ws://18.141.54.174:8000/ws/' + broadcastId); 
+    const pythonWs = new WebSocket('ws://18.141.54.174:8001/ws/' + broadcastId); 
     setPythonWebSocket(pythonWs);
 
   }, [NodeJS_URL, location.search]);
