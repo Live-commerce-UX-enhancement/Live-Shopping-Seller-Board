@@ -27,15 +27,7 @@ function QuestionMessage ({ message,  broadcastId, setMessage, setMessageNo, set
 
     const QA_URL = `${API.PythonQA_URL}/${broadcastId}/query?q=${question}`
     
-    const othePram = {
-      headers: {
-        'content-type': 'application/json',
-        'mode' : 'no-cors'
-      },
-      method: 'GET',
-    };
-
-    fetch(QA_URL, othePram)
+    fetch(QA_URL)
     .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
