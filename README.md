@@ -4,7 +4,7 @@
 
 
 ## Introduction
-We create a Realtime Live broadcasting seller board. We're going to use React on the front end, with NodeJS + Socket.io web socket library on the back end. 
+We create a Realtime Live commerce seller board. We're going to use React on the front end, with NodeJS + Socket.io web socket library on the back end. 
 
 ## How to use
 
