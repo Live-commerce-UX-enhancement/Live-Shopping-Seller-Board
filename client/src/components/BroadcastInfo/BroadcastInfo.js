@@ -82,6 +82,7 @@ const BroadcastInfo = ({ location }) => {
     const othePram = {
       headers: {
         'content-type': 'application/json',
+        'mode' : 'no-cors'
       },
       body: jsonData,
       method: 'POST',
