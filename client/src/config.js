@@ -1,5 +1,5 @@
 export const API = {
-	NodeJS_URL : "http://ec2-13-251-142-57.ap-southeast-1.compute.amazonaws.com:5001",
+	NodeJS_URL : "{해당 EC2 인스턴스 주소}",
 
-    PythonQA_URL : "http://18.141.54.174:8001"
+    PythonQA_URL : "{자동 답변 생성 프로젝트의 EC2 인스턴스 주소}"
 };
