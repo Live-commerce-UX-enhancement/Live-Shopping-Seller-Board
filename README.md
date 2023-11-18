@@ -1,12 +1,22 @@
 # Live Shopping Seller Board
 
-### [Live Site](http://13.251.142.57:3000/)
-
-
-## Introduction
-We create a Realtime Live commerce seller board. We're going to use React on the front end, with NodeJS + Socket.io web socket library on the back end. 
-
-## How to use
-
-Setup:
-- run ```npm start``` for both the client and server side to start the development server
+1. AWS EC2 인스턴스 생성
+2. 생성한 EC2 인스턴스 접속 후 repository git clone 
+3. Live-Shopping-Seller-Board/client/src/config.js 파일 수정
+    - NodeJS_URL : {해당 EC2 인스턴스 주소}
+    - PythonQA_URL : {자동 답변 생성 프로젝트의 EC2 인스턴스 주소}
+4. Live-Shopping-Seller-Board/client/src/components/Chat/Chat.js 파일 수정
+    - 43번째줄 : `const pythonWs = new WebSocket(’{자동 답변 생성 프로젝트의 EC2 인스턴스 주소}/ws/’+ boradcastId);`
+5. server 실행
+    
+    ```bash
+    $ cd server
+    $ npm start 
+    ```
+    
+6. client 실행
+    
+    ```bash
+    $ cd client
+    $ npm start
+    ```
