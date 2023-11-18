@@ -11,6 +11,7 @@
     
     ```bash
     $ cd server
+    $ npm install
     $ npm start 
     ```
     
@@ -18,5 +19,6 @@
     
     ```bash
     $ cd client
+    $ npm install
     $ npm start
     ```
