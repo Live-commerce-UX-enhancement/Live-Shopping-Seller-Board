@@ -40,7 +40,7 @@ function Chat({ location }) {
     });
 
     // Python socket 에 연결
-    const pythonWs = new WebSocket('ws://18.141.54.174:8001/ws/' + broadcastId); 
+    const pythonWs = new WebSocket('{자동 답변 생성 프로젝트의 EC2 인스턴스 주소}/ws/' + broadcastId); 
     setPythonWebSocket(pythonWs);
 
   }, [NodeJS_URL, location.search]);
